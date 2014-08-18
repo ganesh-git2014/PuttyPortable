@@ -1,7 +1,5 @@
 # ===============================
 #  Putty Session Generator Script
-#  Date:   2013/06/14
-#  Author: getkub
 # ===============================
 
 
