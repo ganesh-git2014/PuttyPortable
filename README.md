@@ -15,6 +15,8 @@ How to Generate sessions for yourself
 - Run the "C:\PuttyPortable\Shortcut to AutoIt3.exe" and point it to use "C:\PuttyPortable\PuttySessionGenerator.au3"
 - Voila !!  Start "SuperPutty" again and you can see all putty sessions well aligned with automated logins
 
+
+
 * ======================================
 * Automated Logins
 * ======================================
