@@ -14,11 +14,10 @@ How to Generate sessions for yourself
 - Link "Shortcut to AutoIt3.exe" to where you had AutoIt3.exe installed
 - Run the "C:\PuttyPortable\Shortcut to AutoIt3.exe" and point it to use "C:\PuttyPortable\PuttySessionGenerator.au3"
 - Voila !!  Start "SuperPutty" again and you can see all putty sessions well aligned with automated logins
-- 
 
-# ======================================
-# Automated Logins
-# ======================================
+* ======================================
+* Automated Logins
+* ======================================
 To use automated logins, you need to configure public/private key. Documentation: http://www.ualberta.ca/CNS/RESEARCH/LinuxClusters/pka-putty.html
 
 - Generate the priviate Key and Keep it safely. I would advise to keep outside this directory, so that next time when you overwrite it is not lost.
@@ -32,10 +31,10 @@ chmod 600 ~/.ssh/authorized_keys2
 Start using Putty/SuperPutty and you should be logging in automatically
 
 
-# ======================================
-# Technical Details if you are interested
-# ======================================
-# AutoIT
+* ======================================
+* Technical Details if you are interested
+* ======================================
+* AutoIT
 PuttySessionGenerator.au3		- Main Script to generate everthing. Require AUTOIT software
 
 # Details
