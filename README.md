@@ -1,11 +1,10 @@
-# ======================================
-#  Putty Session Generator Script
-#  SuperPutty Session Config Generator
-#  Date: 2013/06/14
-#  Author: getkub
-# ======================================
-# Pre-reqs - Need AutoIT software, which cannot be put into GITHUB. Need to download it separately 
-# AutoIT download - https://www.autoitscript.com/site/autoit/downloads/
+======================================
+ Putty Session Generator Script
+ Date:   2013/06/14
+ Author: getkub
+======================================
+Pre-reqs - Need AutoIT software, which cannot be put into GITHUB. Need to download it separately 
+AutoIT download - https://www.autoitscript.com/site/autoit/downloads/
 
 How to Generate sessions for yourself
 - Exit any Putty/SuperPutty Sessions you got Open
