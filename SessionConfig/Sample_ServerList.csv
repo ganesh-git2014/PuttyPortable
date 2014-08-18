@@ -1,0 +1,7 @@
+# DO NOT edit first TWO lines. DO NOT put blank lines. ALL 4 fields should be Filled
+# IPADDRESS,HOSTNAME,ENVIRONMENT,SERVICE,SHORT_NAME(OPTIONAL)
+10.111.22.33,myhostname1,PROD,TYPE1_SERVICE,Type1_Europe
+10.111.22.34,myhostname2,DEV,TYPE1_SERVICE,Type1_Europe
+10.111.22.35,myhostname3,QA,TYPE1_SERVICE,Type1_Europe
+10.111.22.36,myhostname4,TEST,TYPE1_SERVICE,Type1_Europe
+10.111.22.37,myhostname5,PROD,TYPE1_SERVICE,Type1_Europe
