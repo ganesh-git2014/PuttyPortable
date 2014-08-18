@@ -12,3 +12,7 @@
 - If you want to integrate with KeePass software
 - Centralised Management of Putty Sessions for whole of your team
 - Mass Operations across multiple servers at same time
+
+
+# For more Details, and how to setup
+# Read the "ReadMore.txt" file
