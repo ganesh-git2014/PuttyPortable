@@ -10,8 +10,9 @@ Global $aConfig, $aTemplate, $aValues, $sOutput, $outDirectory, $tempVarHostName
 Global $inputColourDir, $inputColourFile, $inputColourFileData
 Global $superOutDirectory
 Global $isPublicKeyEnabled = True, $PublicKeyFileEntry
-Global $userName = "", $sshport = "22", $finalOperatingDirectory
+Global $userName = "", $finalOperatingDirectory
 
+$userName = @UserName  
 $finalOperatingDirectory = "C:\PuttyPortable"  
 ; =====================================================================================
 ; Check if PriviateKey file present. 
@@ -20,7 +21,6 @@ $finalOperatingDirectory = "C:\PuttyPortable"
 $privateKeyFile = $finalOperatingDirectory & "\sshKeys\privatekey.ppk"    ; 
 
 If FileExists($privateKeyFile) Then 
-    $userName = @UserName  
     $pUserName = "UserName\" & $userName & "\"
 	$privateKeyFile = StringReplace($privateKeyFile, "\", "%5C")  ; Need to use %5C for "\" within Putty         
 	$PublicKeyFileEntry = "PublicKeyFile\" & $privateKeyFile & "\"
@@ -91,14 +91,13 @@ For $i = 1 To $aConfig[0]
 		; SessionFiles will be created with SERVICE_ENV_HOSTNAME format
 		$tempVarHostName = $SERVICE & "_" & $ENVIRONMENT & "_" & $HOSTNAME
 
+		$inputColourFileName = @ScriptDir & "\SessionConfig\" & $ENVIRONMENT & "_Colour.txt"
 		$inputColourFile = FileOpen(@ScriptDir & "\SessionConfig\" & $ENVIRONMENT & "_Colour.txt", 0)
 			If $inputColourFile = -1 Then
 				MsgBox(0, "Error", "Unable to find Colour Configuration file: " & @ScriptDir & "\SessionConfig\" & $ENVIRONMENT & "_Colour.txt")
 				Exit
-			EndIf
-			
-		$inputColourFileData = FileRead($inputColourFile)
-		
+			EndIf		
+	
 		$hOutput = FileOpen($outDirectory  & "\" & $tempVarHostName & ".session", 2)
 		
 		For $j = 1 To $aTemplate[0] 
@@ -107,18 +106,23 @@ For $i = 1 To $aConfig[0]
 			 ; @CR is very much required for Putty as Putty follows Unix Linefeeds         
 			 FileWriteLine($hOutput, $sOutput & @CR)     
 		 Next 
-		
+
 		; Special Cases
 		; If SSH Keyenabled
 		FileWriteLine($hOutput, $pUserName & @CR)
 		FileWriteLine($hOutput, $PublicKeyFileEntry & @CR)
-		
+
+		; Also Read line by line from $inputColourFile and write to $hOutput with @CR
+		For $k = 1 to _FileCountLines($inputColourFileName)
+			$line = FileReadLine($inputColourFile, $k)
+			FileWriteLine($hOutput, $line & @CR) 
+		Next	
+				
+		FileClose($hOutput)
 		
 		; Writes SuperPutty xml per entry
-		FileWrite($superOutFileVar, '<SessionData SessionId="' & $SERVERTYPE & "/" & $SERVICE & "/" & $ENVIRONMENT & "/" & $HOSTNAME & '" SessionName="' & $tempVarHostName & '" Host="' & $IPADDRESS & '" Port="' & $sshport & '" Proto="SSH" PuttySession="' & $tempVarHostName & '" Username="' & $userName & '" />' & @CR) 
+		FileWrite($superOutFileVar, '<SessionData SessionId="' & $SERVERTYPE & "/" & $SERVICE & "/" & $ENVIRONMENT & "/" & $HOSTNAME & '" SessionName="' & $tempVarHostName & '" Host="' & $IPADDRESS & '" Port="670" Proto="SSH" PuttySession="' & $tempVarHostName & '" Username="' & $userName & '" />' & @CR) 
 		
-		FileWrite($hOutput, $inputColourFileData) 
-		FileClose($hOutput)
 	EndIf
  Next 
 
