@@ -10,7 +10,7 @@ Global $aConfig, $aTemplate, $aValues, $sOutput, $outDirectory, $tempVarHostName
 Global $inputColourDir, $inputColourFile, $inputColourFileData
 Global $superOutDirectory
 Global $isPublicKeyEnabled = True, $PublicKeyFileEntry
-Global $userName = "", $finalOperatingDirectory
+Global $userName = "", $sshport = "22", $finalOperatingDirectory
 
 $userName = @UserName  
 $finalOperatingDirectory = "C:\PuttyPortable"  
@@ -121,7 +121,7 @@ For $i = 1 To $aConfig[0]
 		FileClose($hOutput)
 		
 		; Writes SuperPutty xml per entry
-		FileWrite($superOutFileVar, '<SessionData SessionId="' & $SERVERTYPE & "/" & $SERVICE & "/" & $ENVIRONMENT & "/" & $HOSTNAME & '" SessionName="' & $tempVarHostName & '" Host="' & $IPADDRESS & '" Port="670" Proto="SSH" PuttySession="' & $tempVarHostName & '" Username="' & $userName & '" />' & @CR) 
+		FileWrite($superOutFileVar, '<SessionData SessionId="' & $SERVERTYPE & "/" & $SERVICE & "/" & $ENVIRONMENT & "/" & $HOSTNAME & '" SessionName="' & $tempVarHostName & '" Host="' & $IPADDRESS & '" Port="' & $sshport & '" Proto="SSH" PuttySession="' & $tempVarHostName & '" Username="' & $userName & '" />' & @CR) 
 		
 	EndIf
  Next 
