@@ -11,6 +11,7 @@ This package is useful if you:
 - Have to Centrally manage Putty Sessions for multiple team/group
 - Have to do Mass Operations across multiple servers at same time
 
+- Competele documentation at: http://www.diaryfolio.com/2013/07/putty-session-automation-and-portability.html 
 
 # For more Details, and how to setup
 # Read the "ReadMore.txt" file
